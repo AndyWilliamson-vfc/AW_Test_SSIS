@@ -1,0 +1,237 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="12/17/2019 10:11:09 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="WDE01293"
+  DTS:CreatorName="DICKIES\AWilliamson"
+  DTS:DTSID="{E1A7C1CF-B33E-428B-8A7D-E67CD168F8BC}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="14.0.0800.90"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Truncate tables"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{B605A056-1CB7-4044-959E-8256321746A1}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Clear tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Deletes records from raw SLP05, WTP05 &amp; OEP20"
+      DTS:DTSID="{38DDDD56-6DCC-4D9D-8B69-3E7FA2C1868C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Clear tables"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
+          SQLTask:SqlStatementSource="DELETE FROM [dbo].[raw_OEP20];&#xA;DELETE FROM [dbo].[raw_WTP05];&#xA;DELETE FROM [dbo].[raw_SLP05];&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\OEP20"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Populates OEP20 from i"
+      DTS:DTSID="{4DC5CA09-C6C1-4BB1-A6E0-4CF569FAA386}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="OEP20"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="2">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
+          SQLTask:SqlStatementSource="EXEC dbo.sp_get_OEP20_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SLP05"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Populates SLP05 from i"
+      DTS:DTSID="{09C8E3CF-D49F-48DA-BEFF-FC4F443CB1F5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SLP05"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
+          SQLTask:SqlStatementSource="EXEC dbo.sp_get_SLP05_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\WTP05"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Populates WTP05 from i"
+      DTS:DTSID="{884659e1-74fc-4a9a-9d22-9c0f5d59d554}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="WTP05"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
+          SQLTask:SqlStatementSource="EXEC dbo.sp_get_WTP05_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7900D02C-B581-44CF-A3F9-6EEA800F4212}"
+      DTS:From="Package\Clear tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SLP05" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D5999E9D-E37F-4341-BA96-2825DE0870BB}"
+      DTS:From="Package\Clear tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\WTP05" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B89F73BB-1E92-4376-90B8-BD9CB5E6CA11}"
+      DTS:From="Package\Clear tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\OEP20" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="134,42"
+          Id="Package\Clear tables"
+          TopLeft="264,30" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\OEP20"
+          TopLeft="445,125" />
+        <NodeLayout
+          Size="108,42"
+          Id="Package\SLP05"
+          TopLeft="62,124" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\WTP05"
+          TopLeft="255,125" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="299.5,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-183.5,52"
+              Start="0,0"
+              End="-183.5,44.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.009756097561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.009756097561"
+                    Point2="0,18.009756097561"
+                    Point3="-4,18.009756097561" />
+                  <mssgle:LineSegment
+                    End="-179.5,18.009756097561" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-179.5,18.009756097561"
+                    Point2="-183.5,18.009756097561"
+                    Point3="-183.5,22.009756097561" />
+                  <mssgle:LineSegment
+                    End="-183.5,44.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="333.75,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,53"
+              Start="0,0"
+              End="0,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="362.5,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="168.5,53"
+              Start="0,0"
+              End="168.5,45.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.3560975609756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.3560975609756"
+                    Point2="0,18.3560975609756"
+                    Point3="4,18.3560975609756" />
+                  <mssgle:LineSegment
+                    End="164.5,18.3560975609756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="164.5,18.3560975609756"
+                    Point2="168.5,18.3560975609756"
+                    Point3="168.5,22.3560975609756" />
+                  <mssgle:LineSegment
+                    End="168.5,45.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
