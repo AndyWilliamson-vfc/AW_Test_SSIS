@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Truncate tables"
   DTS:PackageType="5"
-  DTS:VersionBuild="16"
-  DTS:VersionGUID="{B605A056-1CB7-4044-959E-8256321746A1}">
+  DTS:VersionBuild="17"
+  DTS:VersionGUID="{EA5E82BC-A327-4FEB-B38A-68624430C84C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -48,7 +48,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
-          SQLTask:SqlStatementSource="EXEC dbo.sp_get_OEP20_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXEC [dbo].[sp_get_OEP20_from_i];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -65,7 +65,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
-          SQLTask:SqlStatementSource="EXEC dbo.sp_get_SLP05_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXEC [dbo].[sp_get_SLP05_from_i];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -82,7 +82,7 @@
       <DTS:ObjectData>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{4EBA9E05-C8E3-412A-B9B7-A7C23FC04C02}"
-          SQLTask:SqlStatementSource="EXEC dbo.sp_get_WTP05_from_i;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          SQLTask:SqlStatementSource="EXEC [dbo].[sp_get_WTP05_from_i];" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
   </DTS:Executables>

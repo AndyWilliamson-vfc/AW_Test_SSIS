@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "AW_Test_SSIS", "AW_Test_SSIS\AW_Test_SSIS.dtproj", "{7112AB30-55C9-4BAF-ABE8-5F26C81B2F95}"
 EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "Master Calendar processing", "Master Calendar processing\Master Calendar processing.dtproj", "{B1BEE0A5-4936-46A9-978C-B5EA4DB6C23B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Development|Default = Development|Default
@@ -12,6 +14,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{7112AB30-55C9-4BAF-ABE8-5F26C81B2F95}.Development|Default.ActiveCfg = Development
 		{7112AB30-55C9-4BAF-ABE8-5F26C81B2F95}.Development|Default.Build.0 = Development
+		{B1BEE0A5-4936-46A9-978C-B5EA4DB6C23B}.Development|Default.ActiveCfg = Development
+		{B1BEE0A5-4936-46A9-978C-B5EA4DB6C23B}.Development|Default.Build.0 = Development
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
